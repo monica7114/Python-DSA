@@ -1,0 +1,20 @@
+# Koko Eating Bananas
+``` python
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        low=1
+        high=max(piles)
+        min_k=high
+        while low<=high:
+            k=(low+high)//2
+            
+            hours=0
+            for p in piles:
+                hours+=math.ceil(p/k)
+            if hours<=h:
+                min_k=k
+                high=k-1
+            else:
+                low=k+1
+        return min_k
+```
